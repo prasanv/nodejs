@@ -5,7 +5,7 @@ const fs = require("fs");
 const server = http.createServer((req, res) => {
     res.writeHead(200, {"Content-Type":"text/html"});
     const name = "prasan";
-    let html = fs.readFileSync("./main.html", "utf-8")
+    let html = fs.readFileSync("./2-htmlTemplate.html", "utf-8")
     // This is similar to string replacement concept
     html = html.replace("{{name}}", name);
     res.end(html);

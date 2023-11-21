@@ -30,7 +30,7 @@ const server = http.createServer((req, res) => {
     // res.end(html);
 
     // Reads the file in stream and does not block the thread even if the html file is large
-    const html = fs.createReadStream("./index.html","utf-8").pipe(res);
+    fs.createReadStream("./index.html","utf-8").pipe(res);
 })
 
 
