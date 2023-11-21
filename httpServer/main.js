@@ -12,7 +12,6 @@ const server = http.createServer((req, res) => {
 
 })
 
-
 server.listen(3030, () => {
     console.log("server running on port 3030")
 })
