@@ -1,8 +1,17 @@
+
+// - We use process.nextTick() method to queue into the nextTick queue
+// - We resolve or reject a Promise to queue into the Promise queue
+// - We use setTimeout or setInterval to queue into the timer queue
+// - Execute an async method to queue into the I/0 queue
+// - Use setImmediate function to queue into the check queue and finally
+// - Attach close event listeners to queue into the close queue
+
 /** Experiment 1 - all user written JavaScript code takes priority over async code that the runtime would like to execute */
 
 // console.log("console.log 1");
 // process.nextTick(() => console.log("this is process.nextTick 1"));
 // console.log("console.log 2");
+
 
 /** Experiment 2 - all callbacks in nextTick queue are executed before all callbacks in promise queue */
 
@@ -19,6 +28,7 @@
 //   process.nextTick(() => console.log("this is the inner next tick inside Promise then block"));
 // });
 // Promise.resolve().then(() => console.log("this is Promise.resolve 3"));
+
 
 /** Experiment 3 - microtask queues are executed before timer queue */
 
@@ -41,7 +51,8 @@
 // });
 // Promise.resolve().then(() => console.log("this is Promise.resolve 3"));
 
-/** Experiment 4 - microtask queues are executed inbetween timer queue callbacks */
+
+/** Experiment 4 - microtask queues are executed in between timer queue callbacks */
 
 // setTimeout(() => console.log("this is setTimeout 1"), 0);
 // setTimeout(() => {
@@ -73,11 +84,13 @@
 // });
 // Promise.resolve().then(() => console.log("this is Promise.resolve 3"));
 
+
 /** Experiment 5 - timer queue callbacks are executed in FIFO order */
 
 // setTimeout(() => console.log("this is setTimeout 1"), 1000);
 // setTimeout(() => console.log("this is setTimeout 2"), 500);
 // setTimeout(() => console.log("this is setTimeout 3"), 0);
+
 
 /** Experiment 6 - Microtask queues callbacks are executed before I/O queue callbacks */
 
@@ -90,7 +103,8 @@
 // process.nextTick(() => console.log("this is process.nextTick 1"));
 // Promise.resolve().then(() => console.log("this is Promise.resolve 1"));
 
-/** Experiment 7 - Timer anamoly. Order of execution can never be guaranteed */
+
+/** Experiment 7 - Timer anomaly. Order of execution can never be guaranteed */
 
 // const fs = require("fs");
 
@@ -99,6 +113,7 @@
 // fs.readFile(__filename, () => {
 //   console.log("this is readFile 1");
 // });
+
 
 /** Experiment 8 - I/O queue callbacks are executed after Microtask queues callbacks and Timer queue callbacks are executed */
 
@@ -113,6 +128,7 @@
 // setTimeout(() => console.log("this is setTimeout 1"), 0);
 
 // for (let i = 0; i < 1000000000; i++) {}
+
 
 /** Experiment 9 - I/O events are polled and callbacks are added only after I/O is complete */
 
@@ -129,20 +145,22 @@
 
 // for (let i = 0; i < 2000000000; i++) {}
 
+
 /** Experiment 10 - Check queue callbacks are executed after Microtask queues callbacks, Timer queue callbacks and I/O queue callbacks are executed  */
 
-// const fs = require("fs");
+const fs = require("fs");
 
-// fs.readFile(__filename, () => {
-//   console.log("this is readFile 1");
-//   setImmediate(() => console.log("this is inner setImmediate inside readFile"));
-// });
+fs.readFile(__filename, () => {
+  console.log("this is readFile 1");
+  setImmediate(() => console.log("this is inner setImmediate inside readFile"));
+});
 
-// process.nextTick(() => console.log("this is process.nextTick 1"));
-// Promise.resolve().then(() => console.log("this is Promise.resolve 1"));
-// setTimeout(() => console.log("this is setTimeout 1"), 0);
+process.nextTick(() => console.log("this is process.nextTick 1"));
+Promise.resolve().then(() => console.log("this is Promise.resolve 1"));
+setTimeout(() => console.log("this is setTimeout 1"), 0);
 
-// for (let i = 0; i < 2000000000; i++) {}
+for (let i = 0; i < 2000000000; i++) {}
+
 
 /** Experiment 11 - Microtask queues callbacks are executed after I/O callbacks and before check queue callbacks  */
 
@@ -161,6 +179,7 @@
 
 // for (let i = 0; i < 2000000000; i++) {}
 
+
 /** Experiment 12 - Microtask queues callbacks are executed inbetween check queue callbacks  */
 
 // setImmediate(() => console.log("this is setImmediate 1"));
@@ -171,12 +190,14 @@
 // });
 // setImmediate(() => console.log("this is setImmediate 3"));
 
+
 /** Experiment 13 - Timer anamoly. Order of execution can never be guaranteed */
 
 // setTimeout(() => console.log("this is setTimeout 1"), 0);
 // setImmediate(() => console.log("this is setImmediate 1"));
 // Uncomment below to guarantee order
 // for (let i = 0; i < 1000000000; i++) {}
+
 
 /** Experiment 14 - Close queue callbacks are executed after all other queues callbacks  */
 
