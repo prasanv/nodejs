@@ -11,3 +11,6 @@ const printFiveMoves = async (pokemonName) => {
   const moves = pokemon.moves.map(({ move }) => move.name);
   console.log(moves.slice(0, 5));
 };
+
+const pokemon = argv.pokemon;
+printFiveMoves(pokemon);

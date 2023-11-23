@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin": {
-    "custom-cli-package": "CLIOptions.js"
+  "../../../../pbalasubramaniam/.nvm/versions/node/v18.17.1/bin": {
+    "custom-cli-package-options": "CLIOptions.js",
+    "custom-cli-package-interact": "CLIInteract.js"
   },
   "keywords": [],
   "author": "",
