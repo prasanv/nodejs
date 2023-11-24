@@ -8,9 +8,6 @@ console.log(cpus.cpus().length);
 // It allows you to keep applications alive forever, to reload them without downtime and to facilitate common system admin tasks.
 // NOTE: Refer to https://www.npmjs.com/package/pm2 from more about 
 
-// CLI Commands
-// pm2 start autoBalancingClusters.js -i 0
-// pm2 stop autoBalancingClusters.js
 if (cluster.isMaster) {
     console. log(`Master process ${process.pid} is running`);
     // Fork workers.
