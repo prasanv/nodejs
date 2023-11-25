@@ -1,6 +1,6 @@
-const eventEmitter = require("node:events");
+const EventEmitter = require("node:events");
 
-const emitter = new eventEmitter();
+const emitter = new EventEmitter();
 
 // This is called event driven programming
 emitter.on("order-pizza", (size, topping) => {
