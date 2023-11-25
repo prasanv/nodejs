@@ -34,13 +34,20 @@ console.log(path.isAbsolute('../pathModule/index.js'));
 // join method
 // similar to joining the strings, but its platform specific (i.e. it will add forward slash for mac and back slash for windows)
 // NOTE: depending on where you put the "//" and "../" it jumps and concatenates the folder and files 
-console.log(path.join("clusterModule", "../newFolder","./index.js"));
-console.log(path.join("../clusterModule", "newFolder","./index.js"));
-
-console.log(path.join("//folder1", "//folder2","../index.js"));
-console.log(path.join("folder1", "//folder2","../index.js"));
-
-console.log(path.join(__dirname,"data.json"));
-
+console.log("----join method---")
+// console.log(path.join("clusterModule", "../newFolder","./index.js"));
+// console.log(path.join("../clusterModule", "newFolder","./index.js"));
+// console.log(path.join("../clusterModule", "../newFolder","./index.js"));
+// console.log(path.join("//folder1", "//folder2","../index.js"));
+// console.log(path.join("//folder1", "//folder2","./index.js"));
+// console.log(path.join(__dirname,"data.json"));
 
 // resolve method
+// resolves path or sequence of path to an absolute path 
+console.log("----resolve method---")
+console.log(path.resolve("folder1", "folder2","index.html"));
+console.log(path.resolve("/folder1", "folder2","index.html"));
+console.log(path.resolve("/folder1", "//folder2","index.html"));
+console.log(path.resolve("/folder1", "//folder2","../index.html"));
+console.log(path.resolve(__dirname,"data.json"));
+
