@@ -15,7 +15,7 @@ buffer.write("Tamil Nadu");
 
 console.log(buffer.toString());
 
-// Returns raw binary data, HexaDecimal representation
+// Returns HexaDecimal representation of raw binary data
 console.log(buffer);
 
 // Returns utf-8 character encoded value
