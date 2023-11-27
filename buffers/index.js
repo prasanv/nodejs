@@ -1,4 +1,9 @@
-// console.log(Buffer);
+// Buffers
+// Node.js cannot control the pace at which data arrives in the stream.  
+// It can only decide when is the right time to send the data for processing. 
+// If there is data already processed or too little data to process, Node puts the arriving data in a buffer.  
+// It is an intentionally small area that Node maintains in the runtime to process a stream of data. 
+// Buffer is a global node module. Other modules internally use buffers for their functioning we don't use them directly.
 
 console.log(Buffer);
 
