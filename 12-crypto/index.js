@@ -1,5 +1,6 @@
 const crypto = require("node:crypto");
 
+// hash simply means chop && mix
 // Lists all hashing algorithms supported by next js
 // console.log(crypto.getHashes());
 
