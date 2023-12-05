@@ -1,8 +1,5 @@
 const {scrypt, scryptSync, randomBytes, randomUUID, timingSafeEqual} = require("node:crypto");
 
-// Hash-based message authentication code (or HMAC) is a cryptographic authentication technique 
-// that uses a hash function and a secret key.
-
 // scryptSync(password, salt, keylen[, options])
 // crypto.scrypt(password, salt, keylen[, options], callback)
 
