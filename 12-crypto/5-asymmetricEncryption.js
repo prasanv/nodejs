@@ -1,5 +1,5 @@
 const { privateKey, publicKey, passphrase } = require('./5-keypairs');
-const { publicEncrypt, privateDecrypt, getCiphers } = require('node:crypto');
+const { publicEncrypt, privateDecrypt } = require('node:crypto');
 
 const message = 'Incredible India!';
 
