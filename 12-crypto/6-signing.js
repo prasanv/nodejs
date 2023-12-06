@@ -1,6 +1,8 @@
 const { privateKey, publicKey, passphrase } = require('./5-keypairs');
 const { createSign, createVerify } = require('node:crypto');
 
+// Message signing process
+
 const message = 'Incredible Bharat!';
 
 // Sign
